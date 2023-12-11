@@ -16,6 +16,7 @@ annotate service.Books with @(
             $Type : 'UI.DataField',
             Label : 'stock',
             Value : stock,
+            Criticality : criticality,
         },
         {
             $Type : 'UI.DataField',
@@ -25,6 +26,11 @@ annotate service.Books with @(
         {
             $Type : 'UI.DataField',
             Value : currency_code,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : criticality,
+            Label : 'criticality',
         },
     ]
 );

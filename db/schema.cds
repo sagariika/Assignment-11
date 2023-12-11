@@ -3,6 +3,7 @@ using {Currency,managed,cuid} from '@sap/cds/common';
 
 entity Books : managed, cuid {
     key ID :Integer;
+    criticality: Integer;
     title   : String;
     descr   : String;
     stock   : Integer;
