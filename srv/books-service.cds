@@ -1,4 +1,4 @@
-using books from '../db/schema';
+using {books as bs} from '../db/schema';
 @path: '/srv/books'
 
 service BooksService {
@@ -7,9 +7,9 @@ service BooksService {
         {
             grant: [
                 'READ',
-                'UPDATE',
-                'DELETE',
-                'WRITE'
+                'POST',
+                'PUT',
+                'PATCH'
             ],
             to : 'Admin'
         },
@@ -19,16 +19,12 @@ service BooksService {
         }
     ])
     
-    as projection on books.Books;
+    as projection on bs.Books;
+    annotate Books with @odata.draft.enabled;
     
         entity Authors @(restrict:[
         {
-            grant: [
-                'READ',
-                'UPDATE',
-                'DELETE',
-                'WRITE'
-            ],
+            grant: '*',
             to : 'Admin'
         },
         {
@@ -38,5 +34,6 @@ service BooksService {
     ])
 
     
-    as projection on books.Authors;
+    as projection on bs.Authors;
+    annotate Authors with @odata.draft.enabled;
 }
